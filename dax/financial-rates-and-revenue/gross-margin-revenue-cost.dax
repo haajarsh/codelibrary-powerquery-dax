@@ -1,0 +1,23 @@
+ 
+//create table for R01_xxx
+R01_Revenue = GENERATESERIES(1,1000,1)
+ 
+R01_Cost = GENERATESERIES(1,1000,1)
+
+R01_GrossMargin = GENERATESERIES(.01,1,.01)
+
+//measure
+ GM % = 
+    DIVIDE(
+        ( SELECTEDVALUE('R01_Revenue'[Value]) - SELECTEDVALUE('R01_Cost'[Value]) ),
+        SELECTEDVALUE('R01_Revenue'[Value]),
+        BLANK()
+    )
+ Revenue = 
+    DIVIDE(
+        SELECTEDVALUE('R01_Cost'[Value]),
+        ( 1 - SELECTEDVALUE('R01_GrossMargin'[Value])),
+        BLANK()
+    )
+ Cost = 
+    SELECTEDVALUE('R01_Revenue'[Value]) * (1 - SELECTEDVALUE('R01_GrossMargin'[Value]))
