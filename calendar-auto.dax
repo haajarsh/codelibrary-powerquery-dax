@@ -1,0 +1,25 @@
+Calendar Auto = 
+ADDCOLUMNS(
+    CALENDARAUTO(),
+    "Year", YEAR([Date]),
+    "QuarterNr", QUARTER([Date]),
+    "Quarter", FORMAT([Date], "\QQ"),
+    "MonthNr", MONTH([Date]),
+    "Month", FORMAT([Date], "MMM"),
+    "WeekdayNr", WEEKDAY([Date], 2),
+    "Weekday", FORMAT([Date], "DDD"),
+    "FiscalMonth", 
+        SWITCH(
+            TRUE(),
+            MONTH([Date]) < 11, 
+            MONTH([Date]) + 2,
+            MONTH([Date]) = 11, 1,
+            MONTH([Date]) = 12, 2
+        ),
+    "FiscalYear",
+        SWITCH(
+            TRUE(),
+            MONTH([Date]) < 11,
+            YEAR([Date]), 
+            YEAR([Date]) +1)
+)
