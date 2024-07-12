@@ -152,4 +152,4 @@ let fnDateTable = ( StartDate as date, EndDate as date, optional FYStartMonthNum
         Result = " " ] }
       ]
   in 
-  Value.ReplaceType( fnDateTable, Value.ReplaceMetadata( Value.Type( fnDateTable ), Documentation ))
+  Value.ReplaceType( fnDateTable, Value.ReplaceMetadata( Value.Type( fnDateTable ), Documentation )) 
